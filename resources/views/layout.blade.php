@@ -10,7 +10,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <h1 class="page-header text-center">Simple Notes</h1>
+          <h1 class="page-header text-center">Simple Personal Notes</h1>
         </div>
 
         @yield('content')
