@@ -7,3 +7,16 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+a{
+  text-decoration: none;
+  color: grey;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+strong{
+  color: #000;
+}

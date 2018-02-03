@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Note;
 
 class NotesTableSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class NotesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Note::class, 80)->create();
     }
 }
