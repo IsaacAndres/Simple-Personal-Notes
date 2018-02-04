@@ -31,7 +31,7 @@
                     <span class="label label-warning">
                       <span class="glyphicon glyphicon-alert"></span>
                       Importante
-                    </span>
+                    </span>&nbsp;
                   @endif
                   {{ $note->title }}
                 </strong>
