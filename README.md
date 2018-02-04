@@ -1,4 +1,4 @@
-#Simple Personal Notes
+##Simple Personal Notes
 
 This is a simple personal notes application built on Laravel 5.5
 
