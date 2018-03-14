@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Simple Personal Notes</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
   </head>
   <body>
 
@@ -18,6 +18,6 @@
       </div>
     </div>
 
-    <script src="/js/app.js"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
   </body>
 </html>
