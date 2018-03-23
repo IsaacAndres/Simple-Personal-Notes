@@ -8,9 +8,15 @@ use App\Note;
 
 class NoteController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     public function index()
     {
-      $notes = Note::orderBy('id', 'DESC')->paginate();
+      $user_id = auth()->user()->id;
+      $notes = Note::orderBy('id', 'DESC')->where('user_id', $user_id )->paginate();
       return view('notes.index', compact('notes'));
     }
 

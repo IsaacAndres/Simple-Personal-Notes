@@ -71,10 +71,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/notes') }}">Notas</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">iniciar sesión</a>
+                        <a href="{{ route('register') }}">Registrase</a>
                     @endauth
                 </div>
             @endif
@@ -85,7 +85,12 @@
                 </div>
 
                 <div>
+                  @guest
+                    <a href="{{ route('login') }}" class="btn btn-default">iniciar sesión</a>
+                    <a href="{{ route('register') }}" class="btn btn-default">Registrase</a>
+                  @else
                     <a href="{{ route('notes.index') }}" class="btn btn-default">Ir a mis Notas</a>
+                  @endguest
                 </div>
             </div>
         </div>

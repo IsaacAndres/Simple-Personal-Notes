@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
   protected $fillable = [
-      'title', 'content', 'important',
+      'user_id', 'title', 'content', 'important',
   ];
 
   public function isImportant()

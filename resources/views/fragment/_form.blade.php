@@ -1,3 +1,5 @@
+{!! Form::hidden('user_id', auth()->user()->id) !!}
+
 <div class="form-group">
   {!! Form::label('title', 'Título') !!}
   {!! Form::text('title', null, ['class' => 'form-control']) !!}
