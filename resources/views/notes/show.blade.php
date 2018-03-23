@@ -12,6 +12,13 @@
       </a>
     </h2>
 
+    @if ($note->isImportant())
+      <span class="label label-warning">
+        <span class="glyphicon glyphicon-alert"></span>
+        Importante
+      </span>&nbsp;
+    @endif
+
     <p>{{ $note->content }}</p>
   </div>
   <div class="col-sm-4">
