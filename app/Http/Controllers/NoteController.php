@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\NoteRequest;
+use Alert;
 use App\Note;
 
 class NoteController extends Controller
@@ -52,6 +53,7 @@ class NoteController extends Controller
     public function destroy(Note $note)
     {
       $note->delete();
+      // alert()->success('La nota ha sido eliminada');
       return back()->with('info', 'La nota ' . $note->title . ' fue eliminada.');
     }
 }

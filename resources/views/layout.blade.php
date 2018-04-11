@@ -70,5 +70,8 @@
     </div>
 
     <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset ('sweetalert/sweetalert.min.js') }}"></script>
+    @include('sweet::alert')
+    @yield('scripts')
   </body>
 </html>

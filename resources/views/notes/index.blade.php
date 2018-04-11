@@ -49,10 +49,11 @@
               </a>
             </td>
             <td>
-              <form class="" action="{{ route('notes.destroy', $note->id) }}" method="post">
+              <form action="{{ route('notes.destroy', $note->id) }}" method="post">
+                {{ method_field('DELETE') }}
                 {{ csrf_field() }}
-                <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-danger">
+                {{-- <input type="hidden" name="_method" value="DELETE"> --}}
+                <button type="button" class="btn btn-danger btn-delete">
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </form>
@@ -67,4 +68,23 @@
   <div class="col-sm-4">
     @include('fragment._aside')
   </div>
+@endsection
+
+@section('scripts')
+  <script>
+    $('.btn-delete').on('click', function(e) {
+      swal({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        buttons: ["Cancelar", "Sí"],
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          $(this).parents('form:first').submit();
+        }s
+      });
+    });
+  </script>
 @endsection
