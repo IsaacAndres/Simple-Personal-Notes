@@ -14,7 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// Groups Routes...
+Route::resource('groups', 'GroupController')->except(['show', 'create', 'edit']);
 
+// Notes Routes...
+Route::get('/notes/withoutGroup', 'NotesWithoutGroupController@index');
+Route::get('/groups/{group}/notes', 'NoteController@index');
 Route::resource('notes', 'NoteController');
 
 // Authentication Routes...

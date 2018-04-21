@@ -34,6 +34,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                         <li><a href="{{ url('/notes') }}">Notas</a></li>
+                        <li><a href="{{ url('/groups') }}">Grupos</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -69,7 +70,14 @@
       </div>
     </div>
 
+    <footer>
+      <div class="container">
+        <small>{{ config('app.name') }}. 2018</small>
+      </div>
+    </footer>
+
     <script src="{{ asset('/js/app.js') }}"></script>
+    {{-- <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script> --}}
     <script src="{{ asset ('sweetalert/sweetalert.min.js') }}"></script>
     @include('sweet::alert')
     @yield('scripts')

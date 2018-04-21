@@ -1,7 +1,21 @@
 @extends('layout')
 
 @section('content')
-  <div class="col-sm-8">
+  <div class="col-md-2">
+    <h2>Grupos</h2>
+      <ul class="list-group">
+        <li class="list-group-item"><a href="/notes">Todas</a></li>
+        @foreach ($groups as $group)
+          <li class="list-group-item">
+            <a href="/groups/{{$group->id}}/notes">{{ $group->name }}</a>
+          </li>
+        @endforeach
+          <li class="list-group-item"><a href="{{ action('NotesWithoutGroupController@index') }}">Sin grupo</a></li>
+          {{-- <li class="list-group-item"><a href="">Añadir grupo</a></li> --}}
+      </ul>
+  </div>
+
+  <div class="col-md-8">
     <h2>
       Mis Notas
       <a href="{{ route('notes.create') }}" class="btn btn-success pull-right">
@@ -10,13 +24,12 @@
       </a>
     </h2>
 
-    @include('fragment._info')
-
     <table class="table table-hover table-striped">
       <thead>
         <tr>
           <th width="20px">Fecha</th>
           <th>Nota</th>
+          <th>Grupo</th>
           <th colspan="3">&nbsp;</th>
         </tr>
       </thead>
@@ -37,6 +50,13 @@
                 </strong>
                 {{ str_limit($note->content, 60) }}
               </a>
+            </td>
+            <td>
+              @if ($note->group == null)
+                <label class="label label-default">Sin grupo</label>
+              @else
+                <label class="label label-default">{{ $note->group->name }}</label>
+              @endif
             </td>
             <td>
               <a href="{{ route('notes.show', $note->id) }}" class="btn btn-link">
@@ -65,8 +85,8 @@
     {!! $notes->render() !!}
   </div>
 
-  <div class="col-sm-4">
-    @include('fragment._aside')
+  <div class="col-md-2">
+    @include('fragment._info')
   </div>
 @endsection
 

@@ -1,5 +1,3 @@
-{!! Form::hidden('user_id', auth()->user()->id) !!}
-
 <div class="form-group">
   {!! Form::label('title', 'Título') !!}
   {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -8,6 +6,12 @@
 <div class="form-group">
   {!! Form::label('content', 'Contenido') !!}
   {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+  {!! Form::select('group_id', $groups, null, [
+    'class' => 'form-control', 'placeholder' => 'Sin grupo'
+  ]); !!}
 </div>
 
 <div class="form-group">
