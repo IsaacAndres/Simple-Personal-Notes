@@ -20,7 +20,7 @@ class GroupController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $groups = Group::where('user_id', $user_id)->paginate(10);
+        $groups  = Group::where('user_id', $user_id)->paginate(10);
 
         return view('groups.index', compact('groups'));
     }
@@ -33,13 +33,12 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        $user_id = auth()->user()->id;
         $this->validate($request, [
           'name' => 'required',
         ]);
 
-        $request->merge(['user_id' => $user_id]);
-        Group::create($request->all());
+        $group = new Group($request->only('name'));
+        auth()->user()->groups()->save($group);
         return redirect()->route('groups.index')
                          ->with('info', 'El grupo ' . $request->name . ' fue creado.');
     }
@@ -54,9 +53,10 @@ class GroupController extends Controller
     public function update(Request $request, Group $group)
     {
         $this->authorize('pass', $group);
-        $user_id = auth()->user()->id;
-        $request->merge(['user_id' => $user_id]);
+
+        $request->user_id = auth()->user()->id;
         $group->update($request->all());
+
         return redirect()->route('groups.index')
                          ->with('info', 'El grupo ' . $group->name . ' fue actualizado.');
     }
@@ -70,7 +70,9 @@ class GroupController extends Controller
     public function destroy(Group $group)
     {
       $this->authorize('pass', $group);
+
       $group->delete();
+      
       return back()->with('info', 'El grupo ' . $group->name . ' fue eliminado.');
     }
 }

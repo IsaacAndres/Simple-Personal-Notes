@@ -36,7 +36,7 @@
       <tbody>
         @foreach ($notes as $note)
           <tr>
-            <td>{{ $note->created_at->format('d/m/Y') }}</td>
+            <td>{{ $note->created_at->diffForHumans() }}</td>
             <td>
               <a href="{{ route('notes.show', $note->id) }}">
                 <strong>

@@ -14,13 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
-// Groups Routes...
-Route::resource('groups', 'GroupController')->except(['show', 'create', 'edit']);
 
-// Notes Routes...
-Route::get('/notes/withoutGroup', 'NotesWithoutGroupController@index');
-Route::get('/groups/{group}/notes', 'NoteController@index');
-Route::resource('notes', 'NoteController');
+Route::group(['middleware' => 'auth'], function() {
+    // Groups Routes...
+    Route::resource('groups', 'GroupController')->except(['show', 'create', 'edit']);
+
+    // Notes Routes...
+    Route::get('/notes/withoutGroup', 'NotesWithoutGroupController@index');
+    Route::get('/groups/{group}/notes', 'NoteController@index');
+    Route::resource('notes', 'NoteController');
+});
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -36,5 +39,3 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-Route::get('/home', 'HomeController@index')->name('home');

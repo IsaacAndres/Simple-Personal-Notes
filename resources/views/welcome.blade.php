@@ -74,7 +74,7 @@
                         <a href="{{ url('/notes') }}">Notas</a>
                     @else
                         <a href="{{ route('login') }}">iniciar sesión</a>
-                        <a href="{{ route('register') }}">Registrase</a>
+                        <a href="{{ route('register') }}">Registrarse</a>
                     @endauth
                 </div>
             @endif
@@ -87,7 +87,7 @@
                 <div>
                   @guest
                     <a href="{{ route('login') }}" class="btn btn-default">iniciar sesión</a>
-                    <a href="{{ route('register') }}" class="btn btn-default">Registrase</a>
+                    <a href="{{ route('register') }}" class="btn btn-default">Registrarse</a>
                   @else
                     <a href="{{ route('notes.index') }}" class="btn btn-default">Ir a mis Notas</a>
                   @endguest
