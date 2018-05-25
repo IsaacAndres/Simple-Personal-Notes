@@ -1,30 +1,29 @@
 @extends('layout')
 
 @section('content')
-  {{-- <div class="col-md-2">
-    <h2>Grupos</h2>
-      <ul class="list-group">
-        <li class="list-group-item"><a href="/notes">Todas</a></li>
-        @foreach ($groups as $group)
-          <li class="list-group-item">
-            <a href="/groups/{{$group->id}}/notes">{{ $group->name }}</a>
-          </li>
-        @endforeach
-          <li class="list-group-item"><a href="{{ action('NotesWithoutGroupController@index') }}">Sin grupo</a></li>
-          <li class="list-group-item"><a href="">Añadir grupo</a></li>
-      </ul>
-  </div> --}}
 
   <div class="col-md-10">
-    <h2>Mis Grupos</h2>
-    {!! Form::open(['route' => 'groups.store', 'class' => 'form-inline pull-right']) !!}
+    <h2>
+      Mis Grupos
+      {!! Form::open(['route' => 'groups.store', 'class' => 'form-inline pull-right']) !!}
+        <div class="input-group">
+            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nuevo grupo']) !!}
+            <span class="input-group-btn">
+              {!! Form::submit('Agregar', ['class' => 'btn btn-success']) !!}
+            </span>
+        </div> 
+      {!! Form::close() !!}
+    </h2>
+    
+    <hr>
+    {{--  {!! Form::open(['route' => 'groups.store', 'class' => 'form-inline pull-right']) !!}
     <div class="input-group">
         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nuevo grupo']) !!}
         <span class="input-group-btn">
           {!! Form::submit('Agregar', ['class' => 'btn btn-success']) !!}
         </span>
     </div>
-    {!! Form::close() !!}
+    {!! Form::close() !!}  --}}
 
     <table class="table table-hover table-striped">
       <thead>

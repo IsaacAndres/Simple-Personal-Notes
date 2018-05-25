@@ -3,6 +3,7 @@
 @section('content')
   <div class="col-md-2">
     <h2>Grupos</h2>
+    <hr>
       <ul class="list-group">
         <li class="list-group-item"><a href="/notes">Todas</a></li>
         @foreach ($groups as $group)
@@ -10,8 +11,9 @@
             <a href="/groups/{{$group->id}}/notes">{{ $group->name }}</a>
           </li>
         @endforeach
-          <li class="list-group-item"><a href="{{ action('NotesWithoutGroupController@index') }}">Sin grupo</a></li>
-          {{-- <li class="list-group-item"><a href="">Añadir grupo</a></li> --}}
+          <li class="list-group-item">
+            <a href="{{ action('NotesWithoutGroupController@index') }}">Sin grupo</a>
+          </li>
       </ul>
   </div>
 
@@ -23,6 +25,8 @@
         Nueva
       </a>
     </h2>
+
+    <hr>
 
     <table class="table table-hover table-striped">
       <thead>
@@ -82,6 +86,7 @@
         @endforeach
       </tbody>
     </table>
+    
     {!! $notes->render() !!}
   </div>
 

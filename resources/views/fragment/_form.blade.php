@@ -9,6 +9,7 @@
 </div>
 
 <div class="form-group">
+  {!! Form::label('Grupo') !!}
   {!! Form::select('group_id', $groups, null, [
     'class' => 'form-control', 'placeholder' => 'Sin grupo'
   ]); !!}
@@ -16,6 +17,6 @@
 
 <div class="form-group">
   {!! Form::hidden('important',0) !!}
-  {!! Form::checkbox('important', '1') !!}
-  {!! Form::label('important', ' Es importante') !!}
+  <label>{!! Form::checkbox('important', '1') !!} Es importante</label>
+  </span>
 </div>
