@@ -8,4 +8,5 @@ This is a simple app to save notes(reminders) built on Laravel.
 * Laravel Collective
 * SweetAlert2 
 
+## Screenshot
 ![Example](1.png)
